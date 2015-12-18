@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Google Material Design</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+  </head>
+
+  <body>
+
+  <section>
+    <div class="ripple button">
+      <div class="center">Submit</div>
+    </div>
+
+    <div class="ripple button">
+      <div class="center">Cancel</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="button raised blue">
+      <div class="center">Compose</div>
+    </div>
+
+    <div class="button raised green">
+        <div class="center">OK</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="button raised narrow">
+      <div class="center">+1</div>
+    </div>
+
+    <div class="button raised narrow label-blue">
+      <div class="center">+1</div>
+    </div>
+
+    <div class="button raised narrow label-red">
+      <div class="center">+1</div>
+    </div>
+  </section>
+
+
+  <section>
+    <div class="fab red">
+      <div style="display:flex;justify-content:center;align-items:center;">
+        <i class="fa fa-bars center-fab"></i>
+      </div>
+    </div>
+
+    <div class="fab blue">
+      <div style="display:flex;justify-content:center;align-items:center;">
+        <i class="fa fa-tree center-fab"></i>
+      </div>
+    </div>
+
+    <div class="fab green">
+      <div style="display:flex;justify-content:center;align-items:center;">
+        <i class="fa fa-star center-fab"></i>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="menu">
+      <div class="item">
+        <div class="label">Mark as unread</div>
+      </div>
+      <div class="item">
+        <div class="label">Mark as important</div>
+      </div>
+      <div class="item">
+        <div class="label">Add to Tasks</div>
+      </div>
+      <div class="item">
+        <div class="label">Create event</div>
+      </div>
+    </div>
+</section>
+
+<section>
+    <div class="menu blue">
+      <div class="item ripple">
+        <div class="label">Import</div>
+      </div>
+      <div class="item ripple">
+        <div class="label">Export</div>
+      </div>
+      <div class="item ripple">
+        <div class="label">Print</div>
+      </div>
+      <div class="item ripple">
+        <div class="label">Restore contacts</div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section>
+    <div class="dialog">
+      <div class="content">
+        <div class="title">Permission</div><br>
+        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</div>
+      </div>
+
+      <div class="button label-blue ripple">
+        <div class="center">ACCEPT</div>
+      </div>
+
+      <div class="button">
+        <div class="center">DECLINE</div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <script src="./js/jquery.js"></script>
+  <script>
+  //jQuery time
+  var parent, ink, d, x, y;
+  $(".ripple > div").click(function(e){
+    parent = $(this).parent();
+    //create .ink element if it doesn't exist
+    if(parent.find(".ink").length == 0)
+      parent.prepend("<span class='ink'></span>");
+
+    ink = parent.find(".ink");
+    //incase of quick double clicks stop the previous animation
+    ink.removeClass("animate");
+
+    //set size of .ink
+    if(!ink.height() && !ink.width()){
+      //use parent's width or height whichever is larger for the diameter to make a circle which can cover the entire element.
+      d = Math.max(parent.outerWidth(), parent.outerHeight());
+      ink.css({height: d, width: d});
+    }
+
+    //get click coordinates
+    //logic = click coordinates relative to page - parent's position relative to page - half of self height/width to make it controllable from the center;
+    x = e.pageX - parent.offset().left - ink.width()/2;
+    y = e.pageY - parent.offset().top - ink.height()/2;
+
+    //set the position and add class .animate
+    ink.css({top: y+'px', left: x+'px'}).addClass("animate");
+  })
+  </script>
+
+
+
+
+
+  </body>
+</html>
