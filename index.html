@@ -148,6 +148,11 @@
 
     //set the position and add class .animate
     ink.css({top: y+'px', left: x+'px'}).addClass("animate");
+
+    // Automatically cleanup ink element 
+    setTimeout(function(el){
+      el.remove()
+    }, 650, ink);
   })
   </script>
 
